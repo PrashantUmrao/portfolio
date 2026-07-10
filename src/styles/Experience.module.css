@@ -1,0 +1,165 @@
+/* src/styles/Experience.module.css */
+
+.experienceSection {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 31px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.item {
+  position: relative;
+  padding-left: 80px;
+  margin-bottom: 50px;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.marker {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 3px solid var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue);
+  z-index: 2;
+  transition: all var(--transition-fast);
+}
+
+.item:hover .marker {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px var(--accent-cyan);
+  transform: scale(1.2);
+}
+
+.card {
+  padding: 32px;
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.role {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent-blue);
+}
+
+.durationBadge {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+}
+
+.light-theme .durationBadge {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.bullet {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.bullet::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+}
+
+.techLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techTag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: rgba(0, 102, 255, 0.05);
+  border: 1px solid rgba(0, 102, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 17px;
+  }
+  .item {
+    padding-left: 48px;
+  }
+  .marker {
+    left: 6px;
+  }
+  .card {
+    padding: 24px;
+  }
+}

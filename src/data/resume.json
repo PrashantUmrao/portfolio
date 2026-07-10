@@ -1,0 +1,213 @@
+{
+  "personal": {
+    "name": "Prashant Umrao",
+    "title": "Software Engineer & QA Tester",
+    "tagline": "Building responsive frontend experiences and robust quality assurance processes.",
+    "location": "Kanpur, Uttar Pradesh, India",
+    "email": "prashantumrao4242@gmail.com",
+    "phone": "+91 6307437399",
+    "github": "https://github.com/prashantumrao",
+    "linkedin": "https://linkedin.com/in/prashantumrao",
+    "leetcode": "https://leetcode.com/u/prashantumrao/",
+    "summary": "Software Engineer pursuing B.Tech in Information Technology with hands-on experience building responsive and interactive web applications using HTML, CSS, and JavaScript. Experienced in REST API integration, DOM manipulation, software testing, bug reporting, and quality assurance processes. Strong leadership, communication, and collaboration skills demonstrated through technical projects and college-level event management. Seeking opportunities in Frontend Development, Software Testing, and Quality Assurance.",
+    "objectives": "To leverage my technical skillset in Frontend Development and Quality Assurance to build seamless, high-performance, and accessible web experiences while ensuring the highest software standards.",
+    "stats": [
+      { "label": "Years of Learning", "value": "3+" },
+      { "label": "Projects Built", "value": "5+" },
+      { "label": "Tech Stack Badges", "value": "15+" },
+      { "label": "LeetCode Solved", "value": "150+" },
+      { "label": "Certifications", "value": "3" },
+      { "label": "Leadership Roles", "value": "3" }
+    ]
+  },
+  "skills": [
+    { "name": "HTML5", "category": "Frontend", "level": "Expert", "percentage": 95, "icon": "html5" },
+    { "name": "CSS3 & Responsive Design", "category": "Frontend", "level": "Expert", "percentage": 90, "icon": "css3" },
+    { "name": "JavaScript (ES6+)", "category": "Frontend", "level": "Expert", "percentage": 88, "icon": "javascript" },
+    { "name": "REST APIs & JSON", "category": "Web Concepts", "level": "Intermediate", "percentage": 85, "icon": "api" },
+    { "name": "DOM Manipulation", "category": "Web Concepts", "level": "Expert", "percentage": 90, "icon": "dom" },
+    { "name": "Client-Side Storage", "category": "Web Concepts", "level": "Intermediate", "percentage": 80, "icon": "storage" },
+    { "name": "Manual Testing", "category": "Software Testing", "level": "Expert", "percentage": 92, "icon": "manual" },
+    { "name": "Functional & Regression Testing", "category": "Software Testing", "level": "Expert", "percentage": 90, "icon": "functional" },
+    { "name": "Compatibility Testing & QA", "category": "Software Testing", "level": "Expert", "percentage": 88, "icon": "qa" },
+    { "name": "Bug Reporting & Docs", "category": "Software Testing", "level": "Expert", "percentage": 92, "icon": "bug" },
+    { "name": "Git & GitHub", "category": "Tools", "level": "Intermediate", "percentage": 85, "icon": "git" },
+    { "name": "VS Code", "category": "Tools", "level": "Expert", "percentage": 90, "icon": "vscode" },
+    { "name": "Java", "category": "Programming", "level": "Intermediate", "percentage": 75, "icon": "java" },
+    { "name": "Data Structures & Algorithms", "category": "Programming", "level": "Intermediate", "percentage": 78, "icon": "dsa" },
+    { "name": "Python", "category": "Programming", "level": "Intermediate", "percentage": 80, "icon": "python" }
+  ],
+  "experience": [
+    {
+      "role": "QA Tester Intern",
+      "company": "Kalesh",
+      "type": "Hybrid / Internship",
+      "duration": "Jun 2026 – Dec 2026",
+      "description": [
+        "Performed manual testing of web and mobile applications to identify functional defects, usability issues, and performance concerns.",
+        "Executed functional, regression, and compatibility testing to validate new features, updates, and bug fixes before release.",
+        "Documented and reported defects with detailed reproduction steps, improving communication between QA and development teams.",
+        "Collaborated with developers and designers to enhance product quality, user experience, and release stability.",
+        "Maintained test reports, tracked issue resolution progress, and contributed to continuous quality assurance processes.",
+        "Conducted manual testing of both Android application and web platform to ensure functionality, usability, and performance.",
+        "Created and executed test cases, ensuring smooth user experience across different devices and browsers."
+      ],
+      "technologies": ["Manual Testing", "Regression Testing", "Compatibility Testing", "Bug Reporting", "Android Testing", "Web QA"]
+    },
+    {
+      "role": "Python Full Stack Intern",
+      "company": "EduSkills",
+      "type": "Remote / Internship",
+      "duration": "2026",
+      "description": [
+        "Developed web applications using frontend and backend technologies.",
+        "Worked with REST APIs and basic database integration.",
+        "Gained exposure to full-stack development workflows and software deployment practices."
+      ],
+      "technologies": ["Python", "REST APIs", "Frontend Basics", "Backend Basics", "Deployment"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "quick-notes",
+      "title": "Quick Notes",
+      "category": "Frontend Web App",
+      "tagline": "A responsive client-side note taking application with full CRUD capabilities.",
+      "description": "Quick Notes is a responsive notes application featuring complete CRUD (Create, Read, Update, Delete) functionality. It handles client-side persistence dynamically using Local Storage so notes are retained across page refreshes.",
+      "features": [
+        "Full CRUD functionality for handling and managing notes dynamically.",
+        "Client-side data persistence with HTML5 Local Storage.",
+        "Clean, intuitive, and modern UI design focused on user productivity.",
+        "Fully responsive layout optimized for all device sizes (mobile, tablet, desktop)."
+      ],
+      "challenges": "Optimizing local storage write cycles and handling dynamic state changes for live UI updates without layout shifting. Resolved this by building a decoupled state manager in plain JavaScript.",
+      "technologies": ["HTML5", "CSS3", "JavaScript (ES6+)", "Local Storage", "GitHub Pages"],
+      "github": "https://github.com/prashantumrao/Quick-Notes",
+      "demo": "https://prashantumrao.github.io/Quick-Notes/",
+      "timeline": "2026",
+      "imagePlaceholder": "quick_notes_preview"
+    },
+    {
+      "id": "crypto-tracker",
+      "title": "Cryptocurrency Tracker",
+      "category": "API Integration App",
+      "tagline": "A real-time price monitoring dashboard powered by CoinGecko API.",
+      "description": "A real-time cryptocurrency tracking application using JavaScript. It integrates with the CoinGecko REST API to retrieve live market data and renders dynamic, interactive price updates on the page.",
+      "features": [
+        "Real-time cryptocurrency tracking using CoinGecko REST API.",
+        "Asynchronous API calls and dynamic UI rendering with search functionality.",
+        "Detailed statistical layout for market prices, caps, and percentage fluctuations.",
+        "Highly responsive interface adapting seamlessly to multiple screen sizes."
+      ],
+      "challenges": "Handling API rate limit constraints (HTTP 429) from public CoinGecko endpoints and updating UI smoothly during high frequency updates. Resolved using debounced fetch request wrappers and data caching in local memory.",
+      "technologies": ["JavaScript (ES6+)", "REST API (CoinGecko)", "HTML5", "CSS3", "Responsive Design"],
+      "github": "https://github.com/prashantumrao/Crypto-Currency-Tracker",
+      "demo": "https://prashantumrao.github.io/Crypto-Currency-Tracker/",
+      "timeline": "2026",
+      "imagePlaceholder": "crypto_tracker_preview"
+    },
+    {
+      "id": "portfolio",
+      "title": "Personal Portfolio",
+      "category": "Design & Portfolio",
+      "tagline": "A premium, cinematic personal portfolio built with modern Next.js and pure CSS.",
+      "description": "Designed and developed this personal portfolio website to demonstrate premium design principles, glassmorphism, responsive UI layouts, and accessibility.",
+      "features": [
+        "Responsive, performance-focused layout scoring 95+ on Lighthouse metrics.",
+        "Theme toggling (dark/light themes) saved inside browser local storage.",
+        "Command Palette interface (Ctrl + K) for rapid page traversal.",
+        "Interactive vertical timelines, CSS custom animation variables, and full accessibility."
+      ],
+      "challenges": "Implementing advanced animations (like cursor glow and expandable modals) with 60 FPS scrolling while respecting prefers-reduced-motion without bloating JS bundle sizes.",
+      "technologies": ["Next.js", "React", "CSS Modules", "JavaScript (ES6+)", "Semantic HTML"],
+      "github": "https://github.com/prashantumrao",
+      "demo": "https://prashantumrao.github.io/",
+      "timeline": "2026",
+      "imagePlaceholder": "portfolio_preview"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Technology (Information Technology)",
+      "institution": "Axis Institute of Technology and Management, Kanpur",
+      "board": "Dr. A.P.J. Abdul Kalam Technical University (AKTU)",
+      "duration": "2023 – 2027",
+      "score": "82%"
+    },
+    {
+      "degree": "Senior Secondary (Class XII)",
+      "institution": "Maharishi Vidya Mandir, Fatehpur",
+      "board": "CBSE Board",
+      "duration": "2023",
+      "score": "74%"
+    },
+    {
+      "degree": "Higher Secondary (Class X)",
+      "institution": "Maharishi Vidya Mandir, Fatehpur",
+      "board": "CBSE Board",
+      "duration": "2021",
+      "score": "73%"
+    }
+  ],
+  "leadership": [
+    {
+      "role": "Vice-President",
+      "organization": "Sangnak Shila Society / BTech Society",
+      "duration": "30 Sep 2025 – Present",
+      "description": [
+        "Led planning and execution of departmental events.",
+        "Coordinated teams and managed event operations effectively.",
+        "Leading the BTech Society and coordinating all major student activities.",
+        "Organizing and managing technical, cultural, and academic events to enhance student engagement.",
+        "Collaborating with faculty coordinators and student teams to plan events, allocate tasks, and ensure smooth execution.",
+        "Promoting innovation, teamwork, and leadership among students through workshops, competitions, and community initiatives.",
+        "Representing the society during college events and maintaining strong communication between students and management."
+      ]
+    },
+    {
+      "role": "Event Host & Anchor",
+      "organization": "Samvad: Battle of Words ’26",
+      "duration": "2026",
+      "description": [
+        "Hosted and anchored a college-level debate competition.",
+        "Managed stage coordination and audience engagement."
+      ]
+    },
+    {
+      "role": "Volunteer",
+      "organization": "Gandhi Giri Event",
+      "duration": "2025",
+      "description": [
+        "Assisted in organizing and maintaining discipline during the event."
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AI Tools Workshop",
+      "organization": "Be10x",
+      "date": "2025",
+      "credentialUrl": "#"
+    },
+    {
+      "name": "Python 101 for Data Science",
+      "organization": "Cognitive Class / IBM",
+      "date": "2025",
+      "credentialUrl": "#"
+    },
+    {
+      "name": "Python for Data Science",
+      "organization": "Cognitive Class / IBM",
+      "date": "2025",
+      "credentialUrl": "#"
+    }
+  ],
+  "softSkills": [
+    "Leadership",
+    "Public Speaking",
+    "Communication",
+    "Team Collaboration",
+    "Time Management",
+    "Problem Solving"
+  ]
+}

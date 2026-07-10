@@ -1,0 +1,225 @@
+/* src/styles/ExtraPremium.module.css */
+
+/* Custom cursor & spotlight */
+.customCursor {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--accent-blue);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.customCursorDot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-cyan);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out;
+}
+
+.mouseGlow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, rgba(157, 78, 221, 0.02) 50%, transparent 80%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -5;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+
+/* Background animated blobs */
+.blobContainer {
+  position: fixed;
+  inset: 0;
+  z-index: -8;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  filter: blur(80px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  animation: blob-morph 12s ease-in-out infinite alternate;
+}
+
+.blob1 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-blue);
+  top: -10%;
+  left: -10%;
+}
+
+.blob2 {
+  width: 450px;
+  height: 450px;
+  background: var(--accent-purple);
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -3s;
+}
+
+.blob3 {
+  width: 350px;
+  height: 350px;
+  background: var(--accent-cyan);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 16s;
+  animation-delay: -6s;
+}
+
+/* Reading Progress Bar */
+.readingBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--grad-primary);
+  z-index: 9999;
+  width: 0;
+  transition: width 0.1s ease-out;
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #070709;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloaderHidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloaderLogo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+.preloaderLogoDot {
+  color: var(--accent-blue);
+}
+
+.preloaderTrack {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.preloaderBar {
+  position: absolute;
+  inset: 0;
+  background: var(--grad-primary);
+  width: 100%;
+  animation: preloader-slide 1.5s infinite ease-in-out;
+}
+
+/* Floating Social Dock */
+.socialDock {
+  position: fixed;
+  left: 30px;
+  bottom: 50%;
+  transform: translateY(50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 100;
+}
+
+.dockLink {
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.15rem;
+  transition: all var(--transition-fast);
+}
+
+.dockLink:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-blue);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
+}
+
+/* Responsive Hide Social Dock */
+@media (max-width: 1100px) {
+  .socialDock {
+    display: none;
+  }
+}
+
+/* Toast Notifications */
+.toastContainer {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: toast-slide 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.toastSuccess {
+  border-left: 4px solid #10b981;
+}
+
+.toastError {
+  border-left: 4px solid #ef4444;
+}
+
+@keyframes toast-slide {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

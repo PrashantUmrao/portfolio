@@ -1,0 +1,74 @@
+/* src/styles/Leadership.module.css */
+
+.sectionHeader {
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  padding: 32px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  border-color: var(--accent-purple);
+  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.15);
+}
+
+.header {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.role {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.org {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent-purple);
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.descList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.descItem {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.descItem::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--accent-purple);
+  font-size: 0.8rem;
+}
