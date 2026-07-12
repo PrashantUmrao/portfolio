@@ -20,16 +20,23 @@
 
 .portraitCard {
   width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: var(--radius-md); /* 10px */
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12px;
 }
 
 .portraitImage {
   width: 100%;
-  max-width: 320px;
   height: auto;
-  object-fit: contain;
+  border-radius: var(--radius-sm); /* 8px */
+  object-fit: cover;
   display: block;
 }
 

@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import styles from '../styles/Projects.module.css';
 import { ExternalLinkIcon, GithubIcon, CloseIcon } from './Icons';
 
@@ -36,11 +37,14 @@ export default function Projects({ projectsData }) {
               onClick={() => openModal(project)}
             >
               <div className={styles.imageWrapper}>
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title} 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className={styles.image}
-                  loading="lazy"
+                  style={{ objectFit: 'cover' }}
+                  priority={index < 3}
                 />
                 <div className={styles.overlay}>
                   <span className={styles.viewDetails}>View Case Study</span>
@@ -101,10 +105,13 @@ export default function Projects({ projectsData }) {
 
             <div className={styles.modalGrid}>
               <div className={styles.modalImageWrapper}>
-                <img 
+                <Image 
                   src={selectedProject.image} 
                   alt={selectedProject.title} 
+                  width={500}
+                  height={350}
                   className={styles.modalImage}
+                  style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
                 />
               </div>
 

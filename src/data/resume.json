@@ -85,7 +85,7 @@
       "github": "https://github.com/prashantumrao/Quick-Notes",
       "demo": "https://prashantumrao.github.io/Quick-Notes/",
       "timeline": "2026",
-      "imagePlaceholder": "quick_notes_preview"
+      "image": "/cover_quick_notes.png"
     },
     {
       "id": "crypto-tracker",
@@ -104,7 +104,7 @@
       "github": "https://github.com/prashantumrao/Crypto-Currency-Tracker",
       "demo": "https://prashantumrao.github.io/Crypto-Currency-Tracker/",
       "timeline": "2026",
-      "imagePlaceholder": "crypto_tracker_preview"
+      "image": "/cover_crypto_tracker.png"
     },
     {
       "id": "portfolio",
@@ -123,7 +123,7 @@
       "github": "https://github.com/prashantumrao",
       "demo": "https://prashantumrao.github.io/",
       "timeline": "2026",
-      "imagePlaceholder": "portfolio_preview"
+      "image": "/cover_portfolio.png"
     }
   ],
   "education": [
