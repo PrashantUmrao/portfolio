@@ -9,11 +9,18 @@ export default function Education({ educationData, certificationsData }) {
   return (
     <section id="education" className={styles.educationSection}>
       <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+          <span className={styles.sectionLabel}>Academic Path</span>
+          <h2 className="section-title">
+            EDUCATION
+          </h2>
+        </div>
+
         <div className={styles.grid}>
-          {/* Left Column: Education */}
+          {/* Left Column: Education Timeline */}
           <div>
-            <h3 className={styles.sectionTitle}>
-              Education Timeline
+            <h3 className={styles.columnTitle}>
+              Degree & Schooling
             </h3>
             
             <div className={styles.timeline}>
@@ -25,7 +32,7 @@ export default function Education({ educationData, certificationsData }) {
                   </div>
                   <div className={styles.institution}>{edu.institution}</div>
                   <div className={styles.board}>{edu.board}</div>
-                  {edu.score && <span className={styles.score}>Percentage: {edu.score}</span>}
+                  {edu.score && <span className={styles.score}>Result: {edu.score}</span>}
                 </div>
               ))}
             </div>
@@ -33,7 +40,7 @@ export default function Education({ educationData, certificationsData }) {
 
           {/* Right Column: Certifications */}
           <div>
-            <h3 className={styles.sectionTitle}>
+            <h3 className={styles.columnTitle}>
               Certifications
             </h3>
 

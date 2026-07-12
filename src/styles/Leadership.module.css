@@ -1,33 +1,82 @@
 /* src/styles/Leadership.module.css */
 
+.leadershipSection {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 130px 0;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 8px;
+}
+
 .sectionHeader {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 32px;
 }
 
 .card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); /* 14px */
   padding: 32px;
-  border-radius: var(--radius-md);
+  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  box-shadow: none;
+  transition: all 250ms ease;
 }
 
 .card:hover {
-  border-color: var(--accent-purple);
-  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.15);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.vpHighlightCard {
+  border: 1.5px solid var(--accent-cyan);
+  background: rgba(167, 116, 88, 0.03);
+}
+
+.vpHighlightCard:hover {
+  border-color: var(--accent-blue);
+  background: rgba(230, 201, 168, 0.04);
+}
+
+.highlightBadge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--accent-cyan);
 }
 
 .header {
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .role {
@@ -37,16 +86,15 @@
 }
 
 .org {
-  font-family: var(--font-mono);
   font-size: 0.95rem;
-  color: var(--accent-purple);
+  font-weight: 600;
+  color: var(--accent-blue);
 }
 
 .date {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--text-muted);
-  margin-top: 4px;
 }
 
 .descList {
@@ -54,21 +102,22 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 8px;
 }
 
 .descItem {
   position: relative;
   padding-left: 20px;
-  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: justify;
 }
 
 .descItem::before {
-  content: '✦';
+  content: "✦";
   position: absolute;
   left: 0;
-  color: var(--accent-purple);
+  top: 0;
+  color: var(--accent-cyan);
   font-size: 0.8rem;
 }

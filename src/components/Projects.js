@@ -3,205 +3,155 @@
 
 import React, { useState } from 'react';
 import styles from '../styles/Projects.module.css';
-import { SearchIcon, XIcon, GithubIcon, ExternalLinkIcon } from './Icons';
+import { ExternalLinkIcon, GithubIcon, CloseIcon } from './Icons';
 
 export default function Projects({ projectsData }) {
-  const [search, setSearch] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Extract unique categories
-  const categories = ['All', ...new Set(projectsData.map((p) => p.category))];
+  const openModal = (project) => {
+    setSelectedProject(project);
+    document.body.style.overflow = 'hidden';
+  };
 
-  // Filter projects by search and category
-  const filteredProjects = projectsData.filter((p) => {
-    const matchesSearch =
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.technologies.some((t) => t.toLowerCase().includes(search.toLowerCase()));
-    
-    const matchesCategory =
-      activeCategory === 'All' || p.category === activeCategory;
-
-    return matchesSearch && matchesCategory;
-  });
+  const closeModal = () => {
+    setSelectedProject(null);
+    document.body.style.overflow = 'unset';
+  };
 
   return (
-    <section id="projects" className={styles.section}>
+    <section id="projects" className={styles.projectsSection}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <span className="gradient-text" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px' }}>
-            My Works
-          </span>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: '800', marginTop: '8px' }}>
-            Featured Projects
+        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+          <span className={styles.sectionLabel}>My Works</span>
+          <h2 className="section-title">
+            FEATURED PROJECTS
           </h2>
         </div>
 
-        {/* Filter and Search Controls */}
-        <div className={styles.controls}>
-          <div className={styles.filters}>
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`${styles.filterBtn} ${activeCategory === cat ? styles.activeFilter : ''}`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          <div className={styles.searchWrapper}>
-            <SearchIcon className={styles.searchIcon} />
-            <input
-              type="text"
-              placeholder="Search projects..."
-              className={styles.searchInput}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-        </div>
-
-        {/* Projects Grid */}
         <div className={styles.grid}>
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
+          {projectsData.map((project, index) => (
+            <div 
+              key={index} 
               className={`${styles.card} glass`}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => openModal(project)}
             >
-              <div className={styles.imageArea}>
-                <span className={styles.imageText}>{project.title}</span>
+              <div className={styles.imageWrapper}>
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className={styles.image}
+                  loading="lazy"
+                />
+                <div className={styles.overlay}>
+                  <span className={styles.viewDetails}>View Case Study</span>
+                </div>
               </div>
+
               <div className={styles.cardContent}>
-                <span className={styles.projectCategory}>{project.category}</span>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectDesc}>{project.tagline}</p>
-                <div className={styles.techList}>
+                
+                <div className={styles.techStack}>
                   {project.technologies.slice(0, 3).map((tech) => (
                     <span key={tech} className={styles.techTag}>
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className={styles.techTag}>+{project.technologies.length - 3}</span>
+                    <span className={styles.techTagMore}>
+                      +{project.technologies.length - 3} more
+                    </span>
                   )}
+                </div>
+
+                <p className={styles.projectDesc}>
+                  {project.description}
+                </p>
+
+                <div className={styles.ctaGroup} onClick={(e) => e.stopPropagation()}>
+                  <a 
+                    href={project.demo} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.demoLink}
+                  >
+                    Live Demo
+                  </a>
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.githubLink}
+                  >
+                    GitHub
+                  </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Expandable Project Modal Details */}
-        <div 
-          className={`${styles.modalOverlay} ${selectedProject ? styles.modalActive : ''}`}
-          onClick={() => setSelectedProject(null)}
-        >
-          {selectedProject && (
-            <div 
-              className={`${styles.modalContent} glass`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button 
-                className={styles.closeBtn} 
-                onClick={() => setSelectedProject(null)}
-                aria-label="Close details"
-              >
-                <XIcon />
-              </button>
+      {/* Project Case Study Details Modal */}
+      {selectedProject && (
+        <div className={styles.modalOverlay} onClick={closeModal}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeBtn} onClick={closeModal} aria-label="Close details">
+              <CloseIcon />
+            </button>
 
-              <span className={styles.modalCategory}>{selectedProject.category}</span>
-              <h3 className={styles.modalTitle}>{selectedProject.title}</h3>
+            <div className={styles.modalGrid}>
+              <div className={styles.modalImageWrapper}>
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className={styles.modalImage}
+                />
+              </div>
 
-              <div className={styles.modalBody}>
-                <div>
-                  <h4 className={styles.modalSectionTitle}>Description</h4>
-                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', textAlign: 'justify' }}>
-                    {selectedProject.description}
-                  </p>
+              <div className={styles.modalInfo}>
+                <h3 className={styles.modalTitle}>{selectedProject.title}</h3>
+                
+                <div className={styles.modalTechStack}>
+                  {selectedProject.technologies.map((tech) => (
+                    <span key={tech} className={styles.modalTechTag}>
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
-                <div>
-                  <h4 className={styles.modalSectionTitle}>Key Features</h4>
-                  <ul className={styles.modalFeatures}>
-                    {selectedProject.features.map((feat, idx) => (
-                      <li key={idx} className={styles.modalFeatureItem}>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
+                <div className={styles.detailsBlock}>
+                  <h4>Overview</h4>
+                  <p style={{ textAlign: 'justify' }}>{selectedProject.description}</p>
                 </div>
 
-                <div>
-                  <h4 className={styles.modalSectionTitle}>Challenges & Solutions</h4>
-                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', textAlign: 'justify' }}>
-                    {selectedProject.challenges}
-                  </p>
+                <div className={styles.detailsBlock}>
+                  <h4>Key Challenges & Solutions</h4>
+                  <p style={{ textAlign: 'justify' }}>{selectedProject.challenges}</p>
                 </div>
 
-                <div>
-                  <h4 className={styles.modalSectionTitle}>Tech Stack</h4>
-                  <div className={styles.techList} style={{ gap: '8px' }}>
-                    {selectedProject.technologies.map((tech) => (
-                      <span key={tech} className={styles.techTag} style={{ fontSize: '0.8rem', padding: '6px 12px' }}>
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className={styles.btnRow}>
-                  {selectedProject.demo && (
-                    <a 
-                      href={selectedProject.demo} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn-primary-custom"
-                      style={{
-                        background: 'var(--accent-blue)',
-                        color: '#FFFFFF',
-                        padding: '12px 24px',
-                        borderRadius: 'var(--radius-sm)',
-                        fontWeight: 600,
-                        textDecoration: 'none',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        transition: 'all 250ms ease'
-                      }}
-                    >
-                      Live Demo <ExternalLinkIcon />
-                    </a>
-                  )}
-                  {selectedProject.github && (
-                    <a 
-                      href={selectedProject.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      style={{
-                        background: '#FFFFFF',
-                        border: '1px solid var(--accent-blue)',
-                        color: 'var(--accent-blue)',
-                        padding: '12px 24px',
-                        borderRadius: 'var(--radius-sm)',
-                        fontWeight: 600,
-                        textDecoration: 'none',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        transition: 'all 250ms ease'
-                      }}
-                    >
-                      GitHub Repo <GithubIcon />
-                    </a>
-                  )}
+                <div className={styles.modalCtaGroup}>
+                  <a 
+                    href={selectedProject.demo} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.modalDemoBtn}
+                  >
+                    Live Demo <ExternalLinkIcon />
+                  </a>
+                  <a 
+                    href={selectedProject.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.modalGithubBtn}
+                  >
+                    GitHub Code <GithubIcon />
+                  </a>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

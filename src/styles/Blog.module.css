@@ -103,7 +103,7 @@
 
 .readMoreBtn {
   background: var(--accent-blue);
-  color: #FFFFFF;
+  color: var(--bg-primary);
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
@@ -204,15 +204,15 @@
 }
 
 .codeBlock {
-  background: #0F172A;
-  color: #E2E8F0;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   padding: 20px;
   border-radius: var(--radius-sm);
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
   font-size: 0.9rem;
   overflow-x: auto;
   margin: 32px 0;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
 }
 
 /* Responsive Overrides */

@@ -34,30 +34,73 @@ export default function Skills({ skillsData, softSkills }) {
     };
   }, []);
 
+  const getMappedCategory = (cat, name) => {
+    const lowerName = name.toLowerCase();
+    const lowerCat = cat.toLowerCase();
+    if (lowerName.includes('html') || lowerName.includes('css') || lowerName.includes('javascript') || lowerName.includes('dom')) {
+      return 'Frontend';
+    }
+    if (lowerName.includes('api') || lowerName.includes('storage') || lowerName.includes('rest')) {
+      return 'Backend & Concepts';
+    }
+    if (lowerName.includes('git') || lowerName.includes('github')) {
+      return 'Version Control';
+    }
+    if (lowerCat.includes('testing') || lowerCat.includes('qa') || lowerName.includes('bug')) {
+      return 'Software Testing & QA';
+    }
+    if (lowerCat.includes('programming') || lowerName.includes('java') || lowerName.includes('python') || lowerName.includes('dsa') || lowerName.includes('structures')) {
+      return 'Programming';
+    }
+    if (lowerName.includes('vs code') || lowerName.includes('vscode')) {
+      return 'Tools & IDE';
+    }
+    return cat;
+  };
+
   // Filter skills based on search term
   const filteredSkills = skillsData.filter((skill) =>
     skill.name.toLowerCase().includes(search.toLowerCase()) ||
-    skill.category.toLowerCase().includes(search.toLowerCase())
+    getMappedCategory(skill.category, skill.name).toLowerCase().includes(search.toLowerCase())
   );
 
   // Group skills by category
   const categories = filteredSkills.reduce((acc, skill) => {
-    if (!acc[skill.category]) {
-      acc[skill.category] = [];
+    const mappedCat = getMappedCategory(skill.category, skill.name);
+    if (!acc[mappedCat]) {
+      acc[mappedCat] = [];
     }
-    acc[skill.category].push(skill);
+    acc[mappedCat].push(skill);
     return acc;
   }, {});
+
+  // Define desired editorial order
+  const desiredOrder = [
+    'Frontend',
+    'Backend & Concepts',
+    'Programming',
+    'Tools & IDE',
+    'Version Control',
+    'Software Testing & QA'
+  ];
+
+  // Group sorting based on desiredOrder
+  const sortedCategories = Object.keys(categories).sort((a, b) => {
+    const indexA = desiredOrder.indexOf(a);
+    const indexB = desiredOrder.indexOf(b);
+    if (indexA === -1 && indexB === -1) return a.localeCompare(b);
+    if (indexA === -1) return 1;
+    if (indexB === -1) return -1;
+    return indexA - indexB;
+  });
 
   return (
     <section id="skills" className={styles.skillsSection} ref={sectionRef}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <span className="gradient-text" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px' }}>
-            Core Skillset
-          </span>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: '800', marginTop: '8px' }}>
-            Technical Expertise
+          <span className={styles.sectionLabel}>Core Skillset</span>
+          <h2 className="section-title">
+            TECH STACK
           </h2>
         </div>
 
@@ -77,7 +120,7 @@ export default function Skills({ skillsData, softSkills }) {
 
         {/* Dynamic Categories Grid */}
         <div className={styles.categoriesGrid}>
-          {Object.keys(categories).map((cat) => (
+          {sortedCategories.map((cat) => (
             <div key={cat} className={`${styles.categoryCard} glass`}>
               <h3 className={styles.categoryTitle}>
                 {cat} <span>({categories[cat].length})</span>
@@ -107,7 +150,7 @@ export default function Skills({ skillsData, softSkills }) {
         {/* Soft Skills Section */}
         {softSkills && softSkills.length > 0 && (
           <div style={{ marginTop: '60px', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', marginBottom: '20px' }}>
+            <h3 style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
               Soft Skills & Attributes
             </h3>
             <div className={styles.badgesContainer}>

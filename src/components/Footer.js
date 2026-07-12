@@ -107,7 +107,7 @@ export default function Footer({ personalData }) {
             </div>
 
             <div className={styles.copyright}>
-              © 2026 Prashant Umrao
+              © {new Date().getFullYear()} Prashant Umrao
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/Hero.module.css';
-import { GithubIcon, LinkedinIcon, MailIcon, ArrowDownIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, MailIcon } from './Icons';
 
 const roles = ['Frontend Enthusiast', 'QA Tester Intern', 'IT Student'];
 
@@ -12,11 +12,6 @@ export default function Hero({ personalData }) {
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(150);
-
-  // Stats Counter Animation state
-  const [counts, setCounts] = useState(
-    personalData.stats.map(() => 0)
-  );
 
   // Typing effect hook
   useEffect(() => {
@@ -36,7 +31,6 @@ export default function Hero({ personalData }) {
     }
 
     if (!isDeleting && roleText === currentFullText) {
-      // Pause at full text
       timer = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && roleText === '') {
       setIsDeleting(false);
@@ -45,36 +39,6 @@ export default function Hero({ personalData }) {
 
     return () => clearTimeout(timer);
   }, [roleText, isDeleting, roleIndex, typingSpeed]);
-
-  // Statistics incremental count animation on mount
-  useEffect(() => {
-    const duration = 1500; // ms
-    const frameRate = 1000 / 60; // 60fps
-    const totalFrames = Math.round(duration / frameRate);
-
-    const targetValues = personalData.stats.map(stat => {
-      const match = stat.value.match(/\d+/);
-      return match ? parseInt(match[0], 10) : 0;
-    });
-
-    let frame = 0;
-    const counter = setInterval(() => {
-      frame++;
-      const progress = frame / totalFrames;
-
-      setCounts(targetValues.map(target => {
-        return Math.floor(target * progress);
-      }));
-
-      if (frame >= totalFrames) {
-        clearInterval(counter);
-        // set exact values back (e.g. "3+" or "150+")
-        setCounts(targetValues);
-      }
-    }, frameRate);
-
-    return () => clearInterval(counter);
-  }, [personalData.stats]);
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -96,27 +60,29 @@ export default function Hero({ personalData }) {
     <section id="hero" className={styles.hero}>
       <div className="container">
         <div className={styles.contentGrid}>
-          {/* Left Text Info */}
+          {/* Left Column: Typography Layout */}
           <div className={styles.left}>
-            <div className={styles.badge}>
-              <span className={styles.badgeDot} />
-              Open to Opportunities
+            <div className={styles.editorialHeader}>
+              <span className={styles.degreeLabel}>B.TECH INFORMATION TECHNOLOGY</span>
+              <h1 className={styles.title}>PRASHANT UMRAO</h1>
+              <div className={styles.roleSubhead}>
+                <span className={styles.roleTitle}>SOFTWARE ENGINEER</span>
+                <span className={styles.divider}>/</span>
+                <span className={styles.typingRole}>{roleText}</span>
+                <span className={styles.cursor} />
+              </div>
             </div>
-            <h1 className={styles.title}>
-              Hi, I'm <span className="gradient-text">{personalData.name}</span>
-            </h1>
-            <div className={styles.subtitle}>
-              I'm a <span className="gradient-text-cyan">{roleText}</span>
-              <span className={styles.cursor} />
-            </div>
-            <p className={styles.tagline}>{personalData.summary}</p>
+            
+            <p className={styles.tagline}>
+              Building scalable web applications, AI-powered solutions, modern user experiences, and solving real-world problems.
+            </p>
 
             <div className={styles.ctaGroup}>
               <button 
                 onClick={() => scrollToSection('contact')} 
                 className={styles.btnPrimary}
               >
-                Hire Me <ArrowDownIcon style={{ transform: 'rotate(-45deg)' }} />
+                Hire Me <span style={{ marginLeft: '4px' }}>→</span>
               </button>
               <button 
                 onClick={() => scrollToSection('projects')} 
@@ -127,46 +93,30 @@ export default function Hero({ personalData }) {
             </div>
 
             {/* Social badges row */}
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }}>
-              <a href={personalData.github} target="_blank" rel="noopener noreferrer" className={styles.btnSecondary} style={{ padding: '10px' }} aria-label="GitHub">
+            <div className={styles.socialRow}>
+              <a href={personalData.github} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
                 <GithubIcon />
               </a>
-              <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className={styles.btnSecondary} style={{ padding: '10px' }} aria-label="LinkedIn">
+              <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                 <LinkedinIcon />
               </a>
-              <a href={`mailto:${personalData.email}`} className={styles.btnSecondary} style={{ padding: '10px' }} aria-label="Email">
+              <a href={`mailto:${personalData.email}`} className={styles.socialIcon} aria-label="Email">
                 <MailIcon />
               </a>
             </div>
           </div>
 
-          {/* Right Visual Image */}
+          {/* Right Column: Pixar Character */}
           <div className={styles.right}>
             <div className={styles.characterContainer}>
               <img 
                 src="/hero-character.png" 
-                alt="Prashant Umrao - 3D Character Avatar" 
+                alt="Prashant Umrao - 3D Pixar Character Avatar" 
                 className={styles.characterImage}
               />
               <div className={styles.characterShadow} />
             </div>
           </div>
-        </div>
-
-        {/* Stats Row */}
-        <div className={styles.statsRow}>
-          {personalData.stats.map((stat, i) => {
-            const hasPlus = stat.value.includes('+');
-            const targetVal = counts[i] || 0;
-            return (
-              <div key={stat.label} className={styles.statItem}>
-                <span className={styles.statVal}>
-                  {targetVal}{hasPlus && '+'}
-                </span>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>

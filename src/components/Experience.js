@@ -9,11 +9,9 @@ export default function Experience({ experienceData }) {
     <section id="experience" className={styles.experienceSection}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <span className="gradient-text" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px' }}>
-            Work History
-          </span>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: '800', marginTop: '8px' }}>
-            Internship Experience
+          <span className={styles.sectionLabel}>Work History</span>
+          <h2 className="section-title">
+            PROFESSIONAL EXPERIENCE
           </h2>
         </div>
 
