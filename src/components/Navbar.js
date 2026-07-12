@@ -126,7 +126,7 @@ export default function Navbar({ theme, toggleTheme }) {
           ))}
 
           <button 
-            className={styles.themeToggle} 
+            className={`${styles.navLink} ${styles.themeToggleBtn}`} 
             onClick={toggleTheme} 
             aria-label="Toggle Theme"
           >
@@ -162,19 +162,17 @@ export default function Navbar({ theme, toggleTheme }) {
           </span>
         ))}
         
-        <div style={{ marginTop: '20px', paddingLeft: '16px' }}>
-          <button 
-            className={styles.themeToggle} 
-            onClick={toggleTheme}
-            style={{ width: 'fit-content' }}
-          >
-            {theme === 'dark' ? (
-              <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><SunIcon /> Light Mode</span>
-            ) : (
-              <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><MoonIcon /> Dark Mode</span>
-            )}
-          </button>
-        </div>
+        <span
+          onClick={() => {
+            setDrawerOpen(false);
+            toggleTheme();
+          }}
+          className={styles.drawerLink}
+          style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+        </span>
       </div>
     </>
   );

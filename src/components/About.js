@@ -13,7 +13,7 @@ export default function About({ personalData }) {
           <div className={styles.leftColumn}>
             <div className={styles.portraitCard}>
               <img 
-                src="/hero-character.png" 
+                src="/about-character.png" 
                 alt="Prashant Umrao portrait" 
                 className={styles.portraitImage}
               />
@@ -64,8 +64,8 @@ export default function About({ personalData }) {
           {/* Right Column: Biography & Timeline */}
           <div className={styles.rightColumn}>
             <div className={styles.headingArea}>
-              <span className={styles.sectionLabel}>About Me</span>
-              <h2 className={styles.sectionHeading}>Professional Journey & Strengths</h2>
+              <span className={styles.sectionLabel}>Biography</span>
+              <h2 className="section-title">ABOUT ME</h2>
             </div>
             
             <div className={styles.bioCard}>

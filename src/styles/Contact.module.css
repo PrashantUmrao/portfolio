@@ -155,11 +155,11 @@
 
 .btnSubmit {
   background: var(--accent-blue);
-  color: #fff;
+  color: var(--bg-primary);
   border: none;
   font-size: 1rem;
-  font-weight: 600;
-  padding: 14px 28px;
+  font-weight: 500;
+  padding: 12px 24px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
@@ -167,13 +167,14 @@
   justify-content: center;
   gap: 10px;
   width: 100%;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
   transition: all 250ms ease;
 }
 
 .btnSubmit:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(25, 46, 91, 0.15);
+  box-shadow: none;
+  background: var(--accent-hover);
 }
 
 .btnSubmit:disabled {
