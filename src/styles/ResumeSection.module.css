@@ -107,7 +107,7 @@
 }
 
 .downloadBtn {
-  background: var(--grad-primary);
+  background: var(--accent-blue);
   color: #fff;
   border: none;
   font-size: 0.95rem;
@@ -118,14 +118,14 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all var(--transition-fast);
+  transition: all 250ms ease;
   position: relative;
   overflow: hidden;
 }
 
-.downloadBtn:hover {
+.downloadBtn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 4px 12px rgba(25, 46, 91, 0.15);
 }
 
 .downloadBtn:disabled {

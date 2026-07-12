@@ -1,95 +1,12 @@
 /* src/styles/ExtraPremium.module.css */
 
-/* Custom cursor & spotlight */
-.customCursor {
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--accent-blue);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-  mix-blend-mode: difference;
-}
-
-.customCursorDot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--accent-cyan);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s ease-out;
-}
-
-.mouseGlow {
-  position: fixed;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, rgba(157, 78, 221, 0.02) 50%, transparent 80%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: -5;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
-}
-
-/* Background animated blobs */
-.blobContainer {
-  position: fixed;
-  inset: 0;
-  z-index: -8;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.blob {
-  position: absolute;
-  filter: blur(80px);
-  opacity: 0.15;
-  mix-blend-mode: screen;
-  animation: blob-morph 12s ease-in-out infinite alternate;
-}
-
-.blob1 {
-  width: 500px;
-  height: 500px;
-  background: var(--accent-blue);
-  top: -10%;
-  left: -10%;
-}
-
-.blob2 {
-  width: 450px;
-  height: 450px;
-  background: var(--accent-purple);
-  bottom: -10%;
-  right: -10%;
-  animation-delay: -3s;
-}
-
-.blob3 {
-  width: 350px;
-  height: 350px;
-  background: var(--accent-cyan);
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-duration: 16s;
-  animation-delay: -6s;
-}
-
 /* Reading Progress Bar */
 .readingBar {
   position: fixed;
   top: 0;
   left: 0;
   height: 3px;
-  background: var(--grad-primary);
+  background: var(--accent-blue);
   z-index: 9999;
   width: 0;
   transition: width 0.1s ease-out;
@@ -99,7 +16,8 @@
 .preloader {
   position: fixed;
   inset: 0;
-  background: #070709;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   z-index: 99999;
   display: flex;
   flex-direction: column;
@@ -116,11 +34,11 @@
 }
 
 .preloaderLogo {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 2rem;
   letter-spacing: -1px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .preloaderLogoDot {
@@ -130,7 +48,7 @@
 .preloaderTrack {
   width: 200px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--border-color);
   border-radius: var(--radius-full);
   overflow: hidden;
   position: relative;
@@ -139,7 +57,7 @@
 .preloaderBar {
   position: absolute;
   inset: 0;
-  background: var(--grad-primary);
+  background: var(--accent-blue);
   width: 100%;
   animation: preloader-slide 1.5s infinite ease-in-out;
 }
@@ -158,7 +76,7 @@
 
 .dockLink {
   color: var(--text-secondary);
-  background: var(--bg-glass);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   width: 40px;
   height: 40px;
@@ -175,7 +93,7 @@
   color: var(--text-primary);
   border-color: var(--accent-blue);
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Responsive Hide Social Dock */

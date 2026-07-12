@@ -119,16 +119,17 @@ export default function ResumeSection({ personalData, experienceData, educationD
               className="btn-secondary-custom"
               onClick={() => window.print()}
               style={{
-                background: 'var(--bg-glass)',
-                border: '1px solid var(--border-color)',
-                color: 'var(--text-primary)',
+                background: '#FFFFFF',
+                border: '1px solid var(--accent-blue)',
+                color: 'var(--accent-blue)',
                 padding: '14px 28px',
                 borderRadius: 'var(--radius-sm)',
                 fontWeight: 600,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '8px',
+                transition: 'all 250ms ease'
               }}
             >
               Print Version <ExternalLinkIcon />

@@ -117,7 +117,7 @@ export default function Projects({ projectsData }) {
               <div className={styles.modalBody}>
                 <div>
                   <h4 className={styles.modalSectionTitle}>Description</h4>
-                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', textAlign: 'justify' }}>
                     {selectedProject.description}
                   </p>
                 </div>
@@ -135,7 +135,7 @@ export default function Projects({ projectsData }) {
 
                 <div>
                   <h4 className={styles.modalSectionTitle}>Challenges & Solutions</h4>
-                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic' }}>
+                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', fontStyle: 'italic', textAlign: 'justify' }}>
                     {selectedProject.challenges}
                   </p>
                 </div>
@@ -159,15 +159,16 @@ export default function Projects({ projectsData }) {
                       rel="noopener noreferrer" 
                       className="btn-primary-custom"
                       style={{
-                        background: 'var(--grad-cyan)',
-                        color: '#070709',
+                        background: 'var(--accent-blue)',
+                        color: '#FFFFFF',
                         padding: '12px 24px',
                         borderRadius: 'var(--radius-sm)',
                         fontWeight: 600,
                         textDecoration: 'none',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '8px'
+                        gap: '8px',
+                        transition: 'all 250ms ease'
                       }}
                     >
                       Live Demo <ExternalLinkIcon />
@@ -179,16 +180,17 @@ export default function Projects({ projectsData }) {
                       target="_blank" 
                       rel="noopener noreferrer" 
                       style={{
-                        background: 'var(--bg-glass)',
-                        border: '1px solid var(--border-color)',
-                        color: 'var(--text-primary)',
+                        background: '#FFFFFF',
+                        border: '1px solid var(--accent-blue)',
+                        color: 'var(--accent-blue)',
                         padding: '12px 24px',
                         borderRadius: 'var(--radius-sm)',
                         fontWeight: 600,
                         textDecoration: 'none',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '8px'
+                        gap: '8px',
+                        transition: 'all 250ms ease'
                       }}
                     >
                       GitHub Repo <GithubIcon />

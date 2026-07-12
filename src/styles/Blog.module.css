@@ -1,0 +1,232 @@
+/* src/styles/Blog.module.css */
+
+.section {
+  padding: 120px 0;
+  min-height: 100vh;
+}
+
+.headerArea {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-blue);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Index Page Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.imageArea {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.blogTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.blogDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.readMoreBtn {
+  background: var(--accent-blue);
+  color: #FFFFFF;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 250ms ease;
+  text-decoration: none;
+}
+
+.readMoreBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 46, 91, 0.15);
+}
+
+/* Article Page Layout */
+.articleContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.backBtn {
+  background: #FFFFFF;
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: all 250ms ease;
+}
+
+.backBtn:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.articleHeader {
+  margin-bottom: 40px;
+}
+
+.articleTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.featuredImageArea {
+  width: 100%;
+  max-height: 400px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  margin-bottom: 40px;
+  background: var(--bg-secondary);
+}
+
+.featuredImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.articleBody {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.articleBody p {
+  text-align: justify;
+  margin-bottom: 24px;
+}
+
+.articleBody h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 40px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.codeBlock {
+  background: #0F172A;
+  color: #E2E8F0;
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 32px 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .section {
+    padding: 100px 0;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .articleTitle {
+    font-size: 2rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

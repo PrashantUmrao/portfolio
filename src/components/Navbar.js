@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from '../styles/Navbar.module.css';
 import { SunIcon, MoonIcon, MenuIcon, XIcon } from './Icons';
 
@@ -14,9 +15,12 @@ const navItems = [
   { id: 'education', label: 'Education' },
   { id: 'leadership', label: 'Leadership' },
   { id: 'contact', label: 'Contact' },
+  { id: 'blog', label: 'Blog' },
 ];
 
 export default function Navbar({ theme, toggleTheme }) {
+  const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -27,7 +31,11 @@ export default function Navbar({ theme, toggleTheme }) {
       setScrolled(window.scrollY > 50);
 
       // Scroll Spy active section detection
-      const sections = navItems.map(item => document.getElementById(item.id));
+      if (pathname !== '/') return;
+
+      const sections = navItems
+        .filter(item => item.id !== 'blog')
+        .map(item => document.getElementById(item.id));
       let currentSection = 'hero';
 
       const scrollPosition = window.scrollY + 180; // offset for nav height + comfort gap
@@ -38,7 +46,7 @@ export default function Navbar({ theme, toggleTheme }) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            currentSection = navItems[i].id;
+            currentSection = navItems.filter(item => item.id !== 'blog')[i].id;
             break;
           }
         }
@@ -48,10 +56,41 @@ export default function Navbar({ theme, toggleTheme }) {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
+
+  // Handle URL hashes on mount or path change
+  useEffect(() => {
+    if (pathname === '/' && window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          const offset = 90;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 150);
+    }
+  }, [pathname]);
 
   const handleNavClick = (id) => {
     setDrawerOpen(false);
+    if (id === 'blog') {
+      router.push('/blog');
+      return;
+    }
+
+    if (pathname !== '/') {
+      router.push(`/#${id}`);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const offset = 90; // account for navbar height
@@ -80,7 +119,7 @@ export default function Navbar({ theme, toggleTheme }) {
             <span
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`${styles.navLink} ${activeSection === item.id ? styles.active : ''}`}
+              className={`${styles.navLink} ${(pathname.startsWith('/blog') && item.id === 'blog') || (pathname === '/' && activeSection === item.id) ? styles.active : ''}`}
             >
               {item.label}
             </span>
@@ -117,7 +156,7 @@ export default function Navbar({ theme, toggleTheme }) {
           <span
             key={item.id}
             onClick={() => handleNavClick(item.id)}
-            className={`${styles.drawerLink} ${activeSection === item.id ? styles.drawerActive : ''}`}
+            className={`${styles.drawerLink} ${(pathname.startsWith('/blog') && item.id === 'blog') || (pathname === '/' && activeSection === item.id) ? styles.drawerActive : ''}`}
           >
             {item.label}
           </span>

@@ -2,12 +2,15 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from '../styles/Footer.module.css';
 import extraStyles from '../styles/ExtraPremium.module.css';
-import { GithubIcon, LinkedinIcon, MailIcon, ArrowUpIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, LeetcodeIcon, MailIcon, FileTextIcon, ArrowUpIcon } from './Icons';
 
 export default function Footer({ personalData }) {
   const [showFAB, setShowFAB] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +29,11 @@ export default function Footer({ personalData }) {
   };
 
   const handleNavClick = (id) => {
+    if (pathname !== '/') {
+      router.push(`/#${id}`);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const offset = 90;
@@ -75,62 +83,32 @@ export default function Footer({ personalData }) {
       {/* Footer Main Component */}
       <footer className={styles.footer}>
         <div className="container">
-          <div className={styles.grid}>
-            {/* Column 1: Brand Info */}
-            <div className={styles.brandColumn}>
-              <div className={styles.logo}>
-                PRASHANT<span className={styles.logoDot} />
-              </div>
-              <p className={styles.tagline}>{personalData.tagline}</p>
-            </div>
-
-            {/* Column 2: Quick Links */}
-            <div className={styles.linkColumn}>
-              <span className={styles.columnTitle}>Navigation</span>
-              <div className={styles.links}>
-                <span onClick={() => handleNavClick('hero')} className={styles.link}>Home</span>
-                <span onClick={() => handleNavClick('about')} className={styles.link}>About</span>
-                <span onClick={() => handleNavClick('skills')} className={styles.link}>Skills</span>
-                <span onClick={() => handleNavClick('experience')} className={styles.link}>Experience</span>
-              </div>
-            </div>
-
-            {/* Column 3: Secondary Links */}
-            <div className={styles.linkColumn}>
-              <span className={styles.columnTitle}>Focus Areas</span>
-              <div className={styles.links}>
-                <span onClick={() => handleNavClick('projects')} className={styles.link}>Projects</span>
-                <span onClick={() => handleNavClick('education')} className={styles.link}>Education</span>
-                <span onClick={() => handleNavClick('leadership')} className={styles.link}>Leadership</span>
-                <span onClick={() => handleNavClick('contact')} className={styles.link}>Contact</span>
-              </div>
-            </div>
-
-            {/* Column 4: Socials */}
-            <div className={styles.linkColumn}>
-              <span className={styles.columnTitle}>Connect</span>
-              <div className={styles.socialRow}>
-                <a href={personalData.github} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
-                  <GithubIcon />
+          <div className={styles.minimalFooter}>
+            <h3 className={styles.connectHeading}>Let's Connect</h3>
+            
+            <div className={styles.socialLinks}>
+              <a href={personalData.github} target="_blank" rel="noopener noreferrer" className={styles.footerLink} aria-label="GitHub">
+                <GithubIcon /> <span>GitHub</span>
+              </a>
+              <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className={styles.footerLink} aria-label="LinkedIn">
+                <LinkedinIcon /> <span>LinkedIn</span>
+              </a>
+              {personalData.leetcode && (
+                <a href={personalData.leetcode} target="_blank" rel="noopener noreferrer" className={styles.footerLink} aria-label="LeetCode">
+                  <LeetcodeIcon /> <span>LeetCode</span>
                 </a>
-                <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
-                  <LinkedinIcon />
-                </a>
-                <a href={`mailto:${personalData.email}`} className={styles.socialIcon} aria-label="Email">
-                  <MailIcon />
-                </a>
-              </div>
+              )}
+              <a href={`mailto:${personalData.email}`} className={styles.footerLink} aria-label="Email">
+                <MailIcon /> <span>Email</span>
+              </a>
+              <span onClick={() => handleNavClick('resume')} className={styles.footerLink} style={{ cursor: 'pointer' }} aria-label="Resume">
+                <FileTextIcon /> <span>Resume</span>
+              </span>
             </div>
-          </div>
 
-          {/* Bottom copyright and credits */}
-          <div className={styles.bottom}>
-            <span className={styles.copy}>
-              © {new Date().getFullYear()} Prashant Umrao. All rights reserved.
-            </span>
-            <span className={styles.credit}>
-              Built with <span className={styles.creditHeart}>❤️</span> using Next.js & Pure CSS
-            </span>
+            <div className={styles.copyright}>
+              © 2026 Prashant Umrao
+            </div>
           </div>
         </div>
       </footer>

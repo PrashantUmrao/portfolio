@@ -154,7 +154,7 @@
 }
 
 .btnSubmit {
-  background: var(--grad-primary);
+  background: var(--accent-blue);
   color: #fff;
   border: none;
   font-size: 1rem;
@@ -168,12 +168,12 @@
   gap: 10px;
   width: 100%;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+  transition: all 250ms ease;
 }
 
 .btnSubmit:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 4px 12px rgba(25, 46, 91, 0.15);
 }
 
 .btnSubmit:disabled {

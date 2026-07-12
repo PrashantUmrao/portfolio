@@ -37,6 +37,7 @@
   line-height: 1.7;
   font-size: 1.05rem;
   margin-bottom: 24px;
+  text-align: justify;
 }
 
 .infoList {
@@ -138,6 +139,7 @@
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.5;
+  text-align: justify;
 }
 
 /* Media Queries */

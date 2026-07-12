@@ -21,7 +21,7 @@ import Footer from '../components/Footer';
 import CommandPalette from '../components/CommandPalette';
 
 export default function Home() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   // Initialize theme from LocalStorage on mount
@@ -29,15 +29,18 @@ export default function Home() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setTheme(savedTheme);
-      document.body.className = savedTheme === 'light' ? 'light-theme' : '';
+      document.body.className = savedTheme === 'dark' ? 'dark-theme' : '';
+    } else {
+      setTheme('light');
+      document.body.className = '';
     }
   }, []);
 
   const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
     localStorage.setItem('theme', nextTheme);
-    document.body.className = nextTheme === 'light' ? 'light-theme' : '';
+    document.body.className = nextTheme === 'dark' ? 'dark-theme' : '';
   };
 
   // Keyboard shortcut listener for Command Palette (Ctrl+K or Cmd+K)
@@ -54,8 +57,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Visual background grids */}
-      <div className="bg-grid" />
+
       
       {/* Custom loading preloader screen */}
       <Preloader />

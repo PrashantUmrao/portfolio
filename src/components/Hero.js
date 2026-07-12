@@ -142,16 +142,13 @@ export default function Hero({ personalData }) {
 
           {/* Right Visual Image */}
           <div className={styles.right}>
-            <div className={styles.profileContainer}>
-              <div className={styles.profileGlow} />
-              <div className={styles.profileFrame}>
-                <div className={styles.placeholderAvatar}>PU</div>
-              </div>
-              {/* Floating Technology Badges around the avatar */}
-              <div className={styles.floatingIcon}>JS</div>
-              <div className={styles.floatingIcon}>HTML</div>
-              <div className={styles.floatingIcon}>CSS</div>
-              <div className={styles.floatingIcon}>QA</div>
+            <div className={styles.characterContainer}>
+              <img 
+                src="/hero-character.png" 
+                alt="Prashant Umrao - 3D Character Avatar" 
+                className={styles.characterImage}
+              />
+              <div className={styles.characterShadow} />
             </div>
           </div>
         </div>
