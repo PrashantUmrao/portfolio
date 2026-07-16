@@ -5,8 +5,10 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
+import SeoStructuredData from '../../../components/SeoStructuredData';
 import resumeData from '../../../data/resume.json';
 import { blogs } from '../../../data/blogs';
+import { SITE_URL, buildBlogPostingSchema, buildBreadcrumbSchema } from '../../../lib/seo';
 import styles from '../../../styles/Blog.module.css';
 
 export default function BlogPost({ params }) {
@@ -59,6 +61,17 @@ export default function BlogPost({ params }) {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       <main className={styles.section}>
+        <SeoStructuredData
+          data={[
+            buildBreadcrumbSchema([
+              { name: 'Home', url: '/' },
+              { name: 'Blog', url: '/blog' },
+              { name: post.title, url: `/blog/${post.slug}` },
+            ]),
+            buildBlogPostingSchema(post, `${SITE_URL}/blog/${post.slug}`),
+          ]}
+        />
+
         <article className={styles.articleContainer}>
           <Link href="/blog" className={styles.backBtn}>
             ← Back to Blog
@@ -71,6 +84,9 @@ export default function BlogPost({ params }) {
               <span>{post.readingTime}</span>
             </div>
             <h1 className={styles.articleTitle}>{post.title}</h1>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: '760px', marginTop: '16px' }}>
+              {post.description}
+            </p>
           </header>
 
           <div className={styles.featuredImageArea}>

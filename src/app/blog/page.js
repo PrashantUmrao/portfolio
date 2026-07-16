@@ -5,8 +5,10 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import SeoStructuredData from '../../components/SeoStructuredData';
 import resumeData from '../../data/resume.json';
 import { blogs } from '../../data/blogs';
+import { SITE_URL, buildCollectionPageSchema, buildWebPageSchema } from '../../lib/seo';
 import styles from '../../styles/Blog.module.css';
 
 export default function BlogIndex() {
@@ -36,10 +38,28 @@ export default function BlogIndex() {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       <main className={styles.section}>
+        <SeoStructuredData
+          data={[
+            buildWebPageSchema({
+              name: 'Blog | Prashant Umrao',
+              description: 'Insights about frontend development, QA testing, and building premium digital experiences.',
+              url: `${SITE_URL}/blog`,
+            }),
+            buildCollectionPageSchema({
+              name: 'Prashant Umrao Blog',
+              description: 'Practical articles on frontend engineering, QA, productivity, and portfolio design.',
+              url: `${SITE_URL}/blog`,
+            }),
+          ]}
+        />
+
         <div className="container">
           <div className={styles.headerArea}>
             <span className={styles.sectionLabel}>Insights & Stories</span>
             <h1 className={styles.title}>My Blog</h1>
+            <p style={{ maxWidth: '760px', color: 'var(--text-secondary)', marginTop: '12px' }}>
+              Practical notes on frontend engineering, QA testing, developer productivity, and design decisions from a portfolio built to rank for Prashant Umrao.
+            </p>
           </div>
 
           <div className={styles.grid}>

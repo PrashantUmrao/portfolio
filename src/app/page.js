@@ -20,6 +20,9 @@ import ResumeSection from '../components/ResumeSection';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import CommandPalette from '../components/CommandPalette';
+import SeoStructuredData from '../components/SeoStructuredData';
+import SeoFaq from '../components/SeoFaq';
+import { SITE_URL, buildWebPageSchema } from '../lib/seo';
 
 export default function Home() {
   const [theme, setTheme] = useState('dark');
@@ -58,6 +61,13 @@ export default function Home() {
 
   return (
     <>
+      <SeoStructuredData
+        data={buildWebPageSchema({
+          name: 'Prashant Umrao | Software Engineer & QA Tester Portfolio',
+          description: resumeData.personal.summary,
+          url: SITE_URL,
+        })}
+      />
 
       
       {/* Custom loading preloader screen */}
@@ -88,6 +98,32 @@ export default function Home() {
           educationData={resumeData.education}
         />
         <Contact personalData={resumeData.personal} />
+        <SeoFaq
+          title="What people should know about Prashant Umrao"
+          intro="This section answers the most common brand, contact, and service questions that people search before reaching out."
+          faqs={[
+            {
+              question: 'Who is Prashant Umrao?',
+              answer: 'Prashant Umrao is a Software Engineer and QA Tester from Kanpur, Uttar Pradesh, India, focused on responsive frontend development, testing, and quality assurance.',
+            },
+            {
+              question: 'What services does this portfolio highlight?',
+              answer: 'The portfolio highlights frontend development, REST API integration, QA testing, regression testing, bug reporting, and clean UI implementation for modern web apps.',
+            },
+            {
+              question: 'Is Prashant Umrao available for internships or freelance work?',
+              answer: 'The portfolio is positioned for internships, entry-level roles, and project-based collaboration in frontend engineering and software testing.',
+            },
+            {
+              question: 'Where is Prashant Umrao based?',
+              answer: 'He is based in Kanpur, Uttar Pradesh, India, and the site is optimized for local and personal-brand search discovery.',
+            },
+            {
+              question: 'How can recruiters contact Prashant Umrao?',
+              answer: 'Recruiters can use the contact section on the homepage or connect through the listed email, GitHub, and LinkedIn profiles.',
+            },
+          ]}
+        />
       </main>
 
       {/* Page Footer and Floating Docks */}
