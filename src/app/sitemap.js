@@ -2,7 +2,7 @@
 import { blogs } from '../data/blogs';
 
 export default function sitemap() {
-  const baseUrl = 'https://prashantumrao.github.io';
+  const baseUrl = 'https://prashantumrao.me';
   const now = new Date();
 
   return [

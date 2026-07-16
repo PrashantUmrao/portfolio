@@ -7,7 +7,7 @@ export default function robots() {
         allow: '/',
       },
     ],
-    sitemap: 'https://prashantumrao.github.io/sitemap.xml',
-    host: 'https://prashantumrao.github.io',
+    sitemap: 'https://prashantumrao.me/sitemap.xml',
+    host: 'https://prashantumrao.me',
   };
 }

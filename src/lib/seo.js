@@ -1,4 +1,4 @@
-const SITE_URL = 'https://prashantumrao.github.io';
+const SITE_URL = 'https://prashantumrao.me';
 
 function absoluteUrl(pathname = '/') {
   if (!pathname) {
