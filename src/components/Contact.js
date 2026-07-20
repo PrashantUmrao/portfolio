@@ -7,7 +7,7 @@ import extraStyles from '../styles/ExtraPremium.module.css';
 import { MailIcon, PhoneIcon, MapPinIcon, CheckIcon, CopyIcon } from './Icons';
 
 export default function Contact({ personalData }) {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   
@@ -43,30 +43,72 @@ export default function Contact({ personalData }) {
 
   const validate = () => {
     const nextErrors = {};
-    if (!formData.name.trim()) nextErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const subject = formData.subject.trim();
+    const message = formData.message.trim();
+
+    if (!name) {
+      nextErrors.name = 'Name is required';
+    }
+
+    if (!email) {
       nextErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       nextErrors.email = 'Please enter a valid email address';
     }
-    if (!formData.message.trim()) nextErrors.message = 'Message is required';
+
+    if (!subject) {
+      nextErrors.subject = 'Subject is required';
+    }
+
+    if (!message) {
+      nextErrors.message = 'Message is required';
+    } else if (message.length < 10) {
+      nextErrors.message = 'Message must be at least 10 characters long';
+    }
     
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     if (!validate()) return;
 
     setIsSubmitting(true);
 
-    // Simulate sending mock API call
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setErrors({});
+        addToast('Message sent successfully! I will get back to you soon.', 'success');
+      } else {
+        addToast(data.error || 'Failed to send message. Please try again.', 'error');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      addToast('An error occurred while sending your message. Please try again.', 'error');
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-      addToast('Message sent successfully! I will get back to you soon.', 'success');
-    }, 1500);
+    }
   };
 
   return (
@@ -176,6 +218,20 @@ export default function Contact({ personalData }) {
 
               <div className={styles.formGroup}>
                 <label>
+                  Subject <span className={styles.required}>*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Job Opportunity / Project Inquiry"
+                  className={styles.input}
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                />
+                {errors.subject && <span className={styles.errorText}>{errors.subject}</span>}
+              </div>
+
+              <div className={styles.formGroup}>
+                <label>
                   Your Message <span className={styles.required}>*</span>
                 </label>
                 <textarea
@@ -208,3 +264,4 @@ export default function Contact({ personalData }) {
     </section>
   );
 }
+
