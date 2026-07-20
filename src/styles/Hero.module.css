@@ -215,34 +215,143 @@
 }
 
 /* Media Queries */
-@media (max-width: 1024px) {
+/* Mobile (320px - 640px) */
+@media (max-width: 640px) {
+  .hero {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 50px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .contentGrid {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .left {
+    align-items: center;
+  }
+
+  .editorialHeader {
+    margin-bottom: 16px;
+  }
+
+  .degreeLabel {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .title {
+    font-size: clamp(28px, 7vw, 40px);
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+
+  .roleSubhead {
+    font-size: 1rem;
+    justify-content: center;
+  }
+
+  .tagline {
+    font-size: clamp(14px, 3vw, 16px);
+    max-width: 100%;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .btnPrimary, .btnSecondary {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 11px 20px;
+  }
+
+  .socialRow {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .socialIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .right {
+    order: -1;
+    margin-bottom: 20px;
+  }
+
+  .characterContainer {
+    max-width: 200px;
+  }
+
+  .characterShadow {
+    width: 140px;
+    height: 12px;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
   .hero {
     min-height: auto;
     padding-top: 100px;
     padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
+
   .contentGrid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    text-align: center;
-  }
-  .left {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
     align-items: center;
   }
+
+  .title {
+    font-size: clamp(32px, 6vw, 56px);
+  }
+
+  .roleSubhead {
+    font-size: 1.1rem;
+  }
+
+  .tagline {
+    font-size: clamp(15px, 2.5vw, 17px);
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+
   .ctaGroup {
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 32px;
   }
-  .right {
-    order: -1;
+
+  .btnPrimary, .btnSecondary {
+    font-size: 15px;
+    padding: 11px 22px;
   }
+
   .characterContainer {
-    max-width: 280px;
+    max-width: 350px;
+  }
+}
+
+/* Desktop (1025px+) */
+@media (min-width: 1025px) {
+  .contentGrid {
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 60px;
   }
 }

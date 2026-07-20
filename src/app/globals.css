@@ -98,8 +98,63 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   transition: background-color var(--transition-normal), color var(--transition-normal);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+/* Responsive Text Sizing */
+h1, .heading-1 {
+  font-size: clamp(24px, 6vw, 48px);
+}
+
+h2, .heading-2 {
+  font-size: clamp(20px, 4vw, 36px);
+}
+
+h3, .heading-3 {
+  font-size: clamp(18px, 3.5vw, 28px);
+}
+
+/* Responsive Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 40px);
+}
+
+/* Mobile-first responsive spacing */
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 60px;
+  }
+  
+  body {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --nav-height: 65px;
+  }
+  
+  h1 { font-size: 36px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 24px; }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --nav-height: 70px;
+  }
+  
+  h1 { font-size: 48px; }
+  h2 { font-size: 36px; }
+  h3 { font-size: 28px; }
 }
 
 p {

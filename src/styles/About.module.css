@@ -3,6 +3,7 @@
 .aboutSection {
   background: var(--bg-primary);
   border-top: 1px solid var(--border-color);
+  padding: 60px clamp(16px, 5vw, 40px);
 }
 
 .grid {
@@ -10,6 +11,94 @@
   grid-template-columns: 0.8fr 1.2fr;
   gap: 60px;
   align-items: start;
+}
+
+/* Mobile (320px - 640px) */
+@media (max-width: 640px) {
+  .aboutSection {
+    padding: 40px 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .leftColumn {
+    gap: 24px;
+  }
+
+  .portraitCard {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .highlightsArea {
+    padding: 20px;
+  }
+
+  .highlightsTitle {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .highlightsList {
+    gap: 12px;
+  }
+
+  .highlightItem {
+    font-size: 0.85rem;
+  }
+
+  .sectionHeading {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .bioText {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .timelineTitle {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .timeline {
+    padding-left: 16px;
+    gap: 24px;
+  }
+
+  .timelineMeta {
+    font-size: 0.75rem;
+  }
+
+  .timelineLabel {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .aboutSection {
+    padding: 50px 24px;
+  }
+
+  .grid {
+    gap: 40px;
+  }
+
+  .portraitCard {
+    max-width: 280px;
+  }
+
+  .sectionHeading {
+    font-size: clamp(28px, 4vw, 36px);
+  }
+
+  .bioText {
+    font-size: 1rem;
+  }
 }
 
 .leftColumn {

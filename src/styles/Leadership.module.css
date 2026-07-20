@@ -3,7 +3,7 @@
 .leadershipSection {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
-  padding: 130px 0;
+  padding: clamp(40px, 10vw, 130px) clamp(16px, 5vw, 40px);
 }
 
 .sectionLabel {
@@ -18,7 +18,7 @@
 }
 
 .sectionHeader {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .grid {
@@ -35,7 +35,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  box-shadow: none;
   transition: all 250ms ease;
 }
 
@@ -80,7 +79,7 @@
 }
 
 .role {
-  font-size: 1.25rem;
+  font-size: clamp(1.05rem, 3vw, 1.25rem);
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -108,7 +107,7 @@
   position: relative;
   padding-left: 20px;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
   line-height: 1.6;
   text-align: justify;
 }
@@ -120,4 +119,72 @@
   top: 0;
   color: var(--accent-cyan);
   font-size: 0.8rem;
+}
+
+/* Mobile (320px - 640px) */
+@media (max-width: 640px) {
+  .leadershipSection {
+    padding: 40px 16px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 30px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .highlightBadge {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    left: 16px;
+  }
+
+  .header {
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .org {
+    font-size: 0.85rem;
+  }
+
+  .descList {
+    gap: 10px;
+  }
+
+  .descItem {
+    font-size: 0.85rem;
+    text-align: left;
+  }
+}
+
+/* Tablet (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .leadershipSection {
+    padding: 60px 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .role {
+    font-size: 1.1rem;
+  }
 }

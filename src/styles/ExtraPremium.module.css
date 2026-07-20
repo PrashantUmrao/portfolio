@@ -23,7 +23,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: clamp(12px, 5vw, 20px);
+  padding: 20px;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
@@ -36,7 +37,7 @@
 .preloaderLogo {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   letter-spacing: -1px;
   color: var(--text-primary);
 }
@@ -46,7 +47,7 @@
 }
 
 .preloaderTrack {
-  width: 200px;
+  width: clamp(150px, 50vw, 200px);
   height: 2px;
   background: var(--border-color);
   border-radius: var(--radius-full);
@@ -60,6 +61,12 @@
   background: var(--accent-blue);
   width: 100%;
   animation: preloader-slide 1.5s infinite ease-in-out;
+}
+
+@keyframes preloader-slide {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* Floating Social Dock */
@@ -87,13 +94,13 @@
   text-decoration: none;
   font-size: 1.15rem;
   transition: all var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .dockLink:hover {
   color: var(--text-primary);
   border-color: var(--accent-blue);
   transform: translateX(4px);
-  box-shadow: var(--shadow-sm);
 }
 
 /* Responsive Hide Social Dock */

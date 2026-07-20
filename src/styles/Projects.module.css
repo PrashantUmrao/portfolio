@@ -3,7 +3,7 @@
 .projectsSection {
   background: var(--bg-primary);
   border-top: 1px solid var(--border-color);
-  padding: 130px 0;
+  padding: clamp(40px, 10vw, 130px) clamp(16px, 5vw, 40px);
 }
 
 .sectionLabel {
@@ -21,6 +21,87 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 32px;
+}
+
+/* Mobile (320px - 640px) */
+@media (max-width: 640px) {
+  .projectsSection {
+    padding: 40px 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    height: auto;
+  }
+
+  .imageWrapper {
+    height: 180px;
+  }
+
+  .cardContent {
+    padding: 16px;
+  }
+
+  .projectTitle {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .techStack {
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .techTag {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
+  .projectDesc {
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+
+  .ctaGroup {
+    gap: 8px;
+  }
+
+  .demoLink, .githubLink {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
+
+/* Tablet (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .projectsSection {
+    padding: 60px 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .imageWrapper {
+    height: 200px;
+  }
+
+  .cardContent {
+    padding: 20px;
+  }
+
+  .projectTitle {
+    font-size: 1.15rem;
+  }
+
+  .projectDesc {
+    font-size: 0.9rem;
+  }
 }
 
 .card {

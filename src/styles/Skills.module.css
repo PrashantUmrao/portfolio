@@ -3,7 +3,7 @@
 .skillsSection {
   background: var(--bg-primary);
   border-top: 1px solid var(--border-color);
-  padding: 130px 0;
+  padding: clamp(40px, 10vw, 130px) clamp(16px, 5vw, 40px);
 }
 
 .sectionLabel {
@@ -20,7 +20,8 @@
 .searchBar {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  padding: 0 16px;
 }
 
 .searchContainer {
@@ -63,6 +64,82 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 32px;
+}
+
+/* Mobile (320px - 640px) */
+@media (max-width: 640px) {
+  .skillsSection {
+    padding: 40px 16px;
+  }
+
+  .searchBar {
+    margin-bottom: 30px;
+    padding: 0;
+  }
+
+  .searchContainer {
+    max-width: 100%;
+  }
+
+  .searchInput {
+    font-size: 0.9rem;
+    padding: 12px 16px 12px 44px;
+  }
+
+  .searchIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .categoryCard {
+    padding: 16px;
+  }
+
+  .categoryTitle {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .categoryTitle span {
+    font-size: 0.7rem;
+  }
+
+  .skillsList {
+    gap: 12px;
+  }
+
+  .skillItem {
+    gap: 6px;
+  }
+
+  .skillHeader {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .skillsSection {
+    padding: 60px 24px;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .categoryCard {
+    padding: 20px;
+  }
+
+  .categoryTitle {
+    font-size: 1.05rem;
+  }
 }
 
 .categoryCard {
