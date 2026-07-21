@@ -1,41 +1,11 @@
 /* src/components/ResumeSection.js */
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/ResumeSection.module.css';
 import { ExternalLinkIcon } from './Icons';
 
 export default function ResumeSection({ personalData, experienceData, educationData }) {
-  const [downloadProgress, setDownloadProgress] = useState(0);
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [downloadText, setDownloadText] = useState('Download Resume');
-
-  const handleDownload = () => {
-    if (isDownloading) return;
-    setIsDownloading(true);
-    setDownloadText('Preparing...');
-
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
-      setDownloadProgress(progress);
-      setDownloadText(`Downloading (${progress}%)`);
-
-      if (progress >= 100) {
-        clearInterval(interval);
-        setDownloadText('Resume Downloaded!');
-        
-        // Trigger actual download of a mock resume file or print window
-        setTimeout(() => {
-          setIsDownloading(false);
-          setDownloadProgress(0);
-          setDownloadText('Download Resume');
-          window.print(); // Easy neat way to print/save resume right away!
-        }, 1000);
-      }
-    }, 150);
-  };
-
   return (
     <section id="resume" className={styles.section}>
       <div className="container">
@@ -101,19 +71,14 @@ export default function ResumeSection({ personalData, experienceData, educationD
 
           {/* Action Row */}
           <div className={styles.actions}>
-            <button 
+            <a 
+              href="/Prashant_Umrao_Resume.pdf" 
+              download="Prashant_Umrao_Resume.pdf"
               className={styles.downloadBtn} 
-              onClick={handleDownload}
-              disabled={isDownloading}
+              style={{ textDecoration: 'none' }}
             >
-              {downloadText}
-              {isDownloading && (
-                <div 
-                  className={styles.progressBar} 
-                  style={{ width: `${downloadProgress}%` }} 
-                />
-              )}
-            </button>
+              Download Resume
+            </a>
 
             <button 
               className="btn-secondary-custom"
