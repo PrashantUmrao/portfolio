@@ -121,7 +121,7 @@
       "challenges": "Implementing advanced animations (like cursor glow and expandable modals) with 60 FPS scrolling while respecting prefers-reduced-motion without bloating JS bundle sizes.",
       "technologies": ["Next.js", "React", "CSS Modules", "JavaScript (ES6+)", "Semantic HTML"],
       "github": "https://github.com/prashantumrao",
-      "demo": "https://prashantumrao.github.io/",
+      "demo": "https://prashantumrao.me/",
       "timeline": "2026",
       "image": "/cover_portfolio.png"
     }
