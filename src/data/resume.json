@@ -53,18 +53,6 @@
         "Created and executed test cases, ensuring smooth user experience across different devices and browsers."
       ],
       "technologies": ["Manual Testing", "Regression Testing", "Compatibility Testing", "Bug Reporting", "Android Testing", "Web QA"]
-    },
-    {
-      "role": "Python Full Stack Intern",
-      "company": "EduSkills",
-      "type": "Remote / Internship",
-      "duration": "2026",
-      "description": [
-        "Developed web applications using frontend and backend technologies.",
-        "Worked with REST APIs and basic database integration.",
-        "Gained exposure to full-stack development workflows and software deployment practices."
-      ],
-      "technologies": ["Python", "REST APIs", "Frontend Basics", "Backend Basics", "Deployment"]
     }
   ],
   "projects": [
