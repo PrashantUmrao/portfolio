@@ -25,30 +25,43 @@
 
   .grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
     align-items: start;
-    padding: 0 16px;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .infoArea {
     gap: 16px;
+    width: 100%;
   }
 
   .intro {
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 8px;
+    word-break: break-word;
   }
 
   .card {
     padding: 16px;
-    gap: 16px;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .iconWrapper {
     width: 40px;
     height: 40px;
     font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .details {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
   }
 
   .label {
@@ -57,11 +70,14 @@
 
   .value {
     font-size: 0.85rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .copyBtn {
     font-size: 0.65rem;
     padding: 5px 10px;
+    flex-shrink: 0;
   }
 
   .formArea {
@@ -69,20 +85,32 @@
   }
 
   .formCard {
-    padding: 24px 16px;
+    padding: 20px 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .formGroup {
     margin-bottom: 16px;
+    width: 100%;
   }
 
   .input, .textarea {
     font-size: 0.9rem;
     padding: 10px 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .textarea {
     min-height: 100px;
+  }
+
+  .btnSubmit {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    justify-content: center;
   }
 }
 

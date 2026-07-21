@@ -32,16 +32,20 @@
 @media (max-width: 640px) {
   .experienceSection {
     padding: 40px 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .timeline {
     max-width: 100%;
+    width: 100%;
     padding-left: 16px;
-    gap: 28px;
+    gap: 24px;
+    box-sizing: border-box;
   }
 
   .marker {
-    left: -24px;
+    left: -22px;
     top: 20px;
     width: 9px;
     height: 9px;
@@ -49,17 +53,21 @@
 
   .card {
     padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .cardHeader {
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    align-items: flex-start;
   }
 
   .role {
     font-size: 1.05rem;
+    word-break: break-word;
   }
 
   .company {
@@ -68,7 +76,8 @@
 
   .durationBadge {
     font-size: 0.7rem;
-    padding: 5px 10px;
+    padding: 4px 10px;
+    align-self: flex-start;
   }
 
   .list {
@@ -78,8 +87,9 @@
 
   .bullet {
     padding-left: 16px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-align: left;
+    word-break: break-word;
   }
 
   .techLabel {

@@ -174,19 +174,26 @@
 @media (max-width: 640px) {
   .header {
     top: 10px;
-    width: 90%;
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
     height: 60px;
     padding: 0 16px;
     border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   .scrolled {
     top: 8px;
-    width: 90%;
+    width: calc(100% - 32px);
   }
 
   .logo {
     font-size: 1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .nav {
@@ -198,10 +205,12 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    flex-shrink: 0;
   }
 
   .drawer {
     width: 280px;
+    max-width: 85vw;
     padding: 80px 24px 40px;
   }
 

@@ -27,28 +27,37 @@
 @media (max-width: 640px) {
   .projectsSection {
     padding: 40px 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .grid {
     grid-template-columns: 1fr;
     gap: 20px;
+    width: 100%;
   }
 
   .card {
+    width: 100%;
     height: auto;
+    box-sizing: border-box;
   }
 
   .imageWrapper {
     height: 180px;
+    width: 100%;
   }
 
   .cardContent {
     padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .projectTitle {
     font-size: 1.05rem;
     margin-bottom: 10px;
+    word-break: break-word;
   }
 
   .techStack {
@@ -64,15 +73,45 @@
   .projectDesc {
     font-size: 0.85rem;
     margin-bottom: 16px;
+    text-align: left;
+    word-break: break-word;
   }
 
   .ctaGroup {
+    flex-direction: column;
     gap: 8px;
+    width: 100%;
   }
 
   .demoLink, .githubLink {
-    font-size: 0.8rem;
-    padding: 8px 12px;
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  .modalOverlay {
+    padding: 12px;
+  }
+
+  .modalContent {
+    padding: 24px 16px;
+    max-height: 85vh;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modalCtaGroup {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .modalDemoBtn, .modalGithubBtn {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
   }
 }
 
