@@ -26,7 +26,7 @@ export default function About({ personalData }) {
                   <span className={styles.highlightDot}>✦</span>
                   <div>
                     <strong>B.Tech IT</strong>
-                    <span>Axis Institute</span>
+                    <span>Axis Institute of Technology And Management</span>
                   </div>
                 </li>
                 <li className={styles.highlightItem}>
