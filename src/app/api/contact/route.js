@@ -5,8 +5,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function GET() {
     try {
         const { data, error } = await resend.emails.send({
-            from: "onboarding@resend.dev",
-            to: "prashantumrao4242@gmail.com",
+            from: `Prashant Umrao <${process.env.RESEND_FROM_EMAIL}>`,
+            to: process.env.CONTACT_RECEIVER_EMAIL,
             subject: "Resend Test Email",
             html: "<h2>🎉 Congratulations!</h2><p>Your Resend integration is working successfully.</p>",
         });
@@ -133,4 +133,4 @@ function escapeHtml(str) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-}
+}
